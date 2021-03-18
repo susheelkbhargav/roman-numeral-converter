@@ -5,6 +5,7 @@ package com.susheelkb.romannumeral.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,4 @@ public class RomanNumeralConverterController {
 		RomanNumber romanNumber = romanNumeralConverterService.toRomanNumber(number);
 		return ResponseEntity.ok(romanNumber);
     }
-	
-	
 }

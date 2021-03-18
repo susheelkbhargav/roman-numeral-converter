@@ -1,4 +1,9 @@
-C:\Users\naren\roman-nums-app\src\main\java\com\susheelkb\romannumeral\controller\RomanNumeralConverterController.java
-C:\Users\naren\roman-nums-app\src\main\java\com\susheelkb\romannumeral\domain\RomanNumber.java
-C:\Users\naren\roman-nums-app\src\main\java\com\susheelkb\romannumeral\service\RomanNumeralConverterService.java
-C:\Users\naren\roman-nums-app\src\main\java\com\susheelkb\romannumeral\RomanNumsApplication.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\exception\NotAnIntegerException.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\RomanNumsApplication.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\exception\NumberIsZeroException.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\exception\RangeViolationException.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\service\RomanNumeralConverterService.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\controller\RomanNumeralConverterController.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\exception\RomanNumeralError.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\domain\RomanNumber.java
+C:\Users\naren\roman-numeral-converter-app\src\main\java\com\susheelkb\romannumeral\exception\GlobalExceptionHandler.java
