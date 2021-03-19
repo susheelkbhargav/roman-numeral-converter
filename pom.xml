@@ -53,6 +53,13 @@
    			 <version>2.9.0</version>
 		</dependency>
 		
+	   <!-- https://mvnrepository.com/artifact/com.diffplug.spotless/spotless-eclipse-base -->
+		<dependency>
+		    <groupId>com.diffplug.spotless</groupId>
+		    <artifactId>spotless-eclipse-base</artifactId>
+		    <version>3.4.2</version>
+		</dependency>
+		
 		</dependencies>
 
 	<build>
