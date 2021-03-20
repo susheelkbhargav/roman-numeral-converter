@@ -3,11 +3,9 @@
  */
 package com.susheelkb.romannumeral.service;
 
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.TreeMap;
 
 import org.springframework.stereotype.Service;
 
@@ -54,7 +52,7 @@ public class RomanNumeralConverterService {
 	
 	public RomanNumber toRomanNumber(Integer numberToConvert) {
 	     // if the numberToConvert is not an integer/not an number/if the number is not finite then throw the error 
-		if(!(numberToConvert instanceof Integer)){
+		if(!(numberToConvert instanceof Integer )){
             throw new NotAnIntegerException("The Queried parameter is not an integer");
         }
 
@@ -66,7 +64,7 @@ public class RomanNumeralConverterService {
 
         //if the number to be converted is not between the limits, throw the error 
 		if(numberToConvert < MIN_NUMBER_TO_CONVERT || numberToConvert > MAX_NUMBER_TO_CONVERT){
-			throw new RangeViolationException( "The number entered must be between" + MIN_NUMBER_TO_CONVERT + "and "
+			throw new RangeViolationException( "The number entered must be between " + MIN_NUMBER_TO_CONVERT + "and "
 		+ MAX_NUMBER_TO_CONVERT);
 		}
 		RomanNumber romanNumber = new RomanNumber();

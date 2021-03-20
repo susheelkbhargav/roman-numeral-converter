@@ -3,16 +3,18 @@
  */
 package com.susheelkb.romannumeral.controller;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.susheelkb.romannumeral.domain.RomanNumber;
 import com.susheelkb.romannumeral.service.RomanNumeralConverterService;
+
+import  org.slf4j.Logger;
 
 /**
  * 
@@ -20,7 +22,10 @@ import com.susheelkb.romannumeral.service.RomanNumeralConverterService;
  *
  */
 @RestController
+@Validated
 public class RomanNumeralConverterController {
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private RomanNumeralConverterService romanNumeralConverterService;
@@ -28,6 +33,7 @@ public class RomanNumeralConverterController {
 	@GetMapping("/romannumeral")
     public ResponseEntity<RomanNumber> toRomanNum( @RequestParam("query") Integer number) {	
 		RomanNumber romanNumber = romanNumeralConverterService.toRomanNumber(number);
+		logger.info("API-CALLED "+number);
 		return ResponseEntity.ok(romanNumber);
     }
 }
