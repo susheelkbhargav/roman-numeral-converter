@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.susheelkb.romannumeral.domain.RomanNumber;
 import com.susheelkb.romannumeral.service.RomanNumeralConverterService;
 
-import  org.slf4j.Logger;
+import java.util.List;
+
+import org.slf4j.Logger;
 
 /**
  * 
@@ -24,16 +26,24 @@ import  org.slf4j.Logger;
 @RestController
 @Validated
 public class RomanNumeralConverterController {
-	
+
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private RomanNumeralConverterService romanNumeralConverterService;
-	
-	@GetMapping("/romannumeral")
-    public ResponseEntity<RomanNumber> toRomanNum( @RequestParam("query") Integer number) {	
+
+	@GetMapping(value = "/romannumeral", params = { "query" })
+	public ResponseEntity<RomanNumber> toRomanNum(@RequestParam("query") int number) {
 		RomanNumber romanNumber = romanNumeralConverterService.toRomanNumber(number);
-		logger.info("API-CALLED "+number);
+		logger.info("API-CALLED " + number);
 		return ResponseEntity.ok(romanNumber);
-    }
+	}
+
+	@GetMapping(value = "/romannumeral", params = { "min", "max" })
+	public ResponseEntity<List<RomanNumber>> convertRangeToRomanNumeral(@RequestParam("min") int minNumber,
+			@RequestParam("max") int maxNumber) {
+		List<RomanNumber> romanNumberList = romanNumeralConverterService.convertRangeToRoman(minNumber, maxNumber);
+		logger.info("API-CALLED with range");
+		return ResponseEntity.ok(romanNumberList);
+	}
 }
