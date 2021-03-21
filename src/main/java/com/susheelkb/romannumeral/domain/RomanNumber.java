@@ -55,6 +55,7 @@ public class RomanNumber {
 
 	/**
 	 * 
+	 * @return
 	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
