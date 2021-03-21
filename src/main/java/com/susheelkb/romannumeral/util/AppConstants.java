@@ -3,7 +3,7 @@ package com.susheelkb.romannumeral.util;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class RomanNumsAppConstants {
+public class AppConstants {
 	public static final Integer MIN_NUMBER_TO_CONVERT = 1;
 	public static final Integer MAX_NUMBER_TO_CONVERT = 3999;
 

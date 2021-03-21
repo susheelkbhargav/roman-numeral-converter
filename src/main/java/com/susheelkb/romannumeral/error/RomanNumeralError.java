@@ -1,4 +1,4 @@
-package com.susheelkb.romannumeral.exception;
+package com.susheelkb.romannumeral.error;
 import org.springframework.http.HttpStatus;
 
 public class RomanNumeralError {

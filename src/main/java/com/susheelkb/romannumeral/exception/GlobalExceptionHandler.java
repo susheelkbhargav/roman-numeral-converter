@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.susheelkb.romannumeral.error.RomanNumeralError;
+
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
@@ -14,7 +17,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@ExceptionHandler(RangeViolationException.class)
-	public ResponseEntity<?>numberNotInRangeHandling(RangeViolationException exception){
+	public ResponseEntity<Object>numberNotInRangeHandling(RangeViolationException exception){
 		RomanNumeralError errorDetails = new RomanNumeralError(HttpStatus.UNPROCESSABLE_ENTITY, exception.getMessage());
 		logger.error("Number out of Range", exception);
 		return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
