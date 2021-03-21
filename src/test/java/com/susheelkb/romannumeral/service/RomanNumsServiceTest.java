@@ -25,12 +25,12 @@ public class RomanNumsServiceTest {
 
 	@Test(expected = NumberIsZeroException.class)
 	public void testExceptionThrownIfGivenZero() {
-		RomanNumber romanNumber = numsService.toRomanNumber(0);
+	           numsService.toRomanNumber(0);
 	}
 	
 	@Test(expected = RangeViolationException.class)
 	public void testExceptionThrownIfGivenOutOfRange() {
-		RomanNumber romanNumber = numsService.toRomanNumber(4000);
+		numsService.toRomanNumber(4000);
 	}
 
 	@Test
