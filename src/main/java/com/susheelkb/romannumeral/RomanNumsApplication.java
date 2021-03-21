@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class RomanNumsApplication {
-	public static void main( String[] args ) {
-		SpringApplication.run( RomanNumsApplication.class, args );
-	}	
+	public static void main(String[] args) {
+		SpringApplication.run(RomanNumsApplication.class, args);
+	}
 }

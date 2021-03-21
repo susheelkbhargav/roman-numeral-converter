@@ -24,5 +24,5 @@ public class AppConstants {
 		CORRESPONDING_ROMAN.put(4, "IV");
 		CORRESPONDING_ROMAN.put(1, "I");
 
-	}	
+	}
 }

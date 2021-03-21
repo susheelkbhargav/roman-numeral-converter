@@ -32,6 +32,12 @@ public class RomanNumeralConverterController {
 	@Autowired
 	private RomanNumeralConverterService romanNumeralConverterService;
 
+	/**
+	 * 
+	 * @param number
+	 * @return
+	 */
+
 	@GetMapping(value = "/romannumeral", params = { "query" })
 	public ResponseEntity<RomanNumber> toRomanNum(@RequestParam("query") int number) {
 		RomanNumber romanNumber = romanNumeralConverterService.toRomanNumber(number);
@@ -39,6 +45,12 @@ public class RomanNumeralConverterController {
 		return ResponseEntity.ok(romanNumber);
 	}
 
+	/**
+	 * 
+	 * @param minNumber
+	 * @param maxNumber
+	 * @return
+	 */
 	@GetMapping(value = "/romannumeral", params = { "min", "max" })
 	public ResponseEntity<List<RomanNumber>> convertRangeToRomanNumeral(@RequestParam("min") int minNumber,
 			@RequestParam("max") int maxNumber) {
