@@ -10,14 +10,13 @@ Part of the take home assessment
 ### [Development methodology](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#development-methodology-1) 
 ### [Package layout](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#project-layout) 
 ###  [Sequence Diagram](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#sequence-diagram-1)
-### [Validation](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#validation)
-###  [Error Resolution](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#error-resolution) 
+### [Validation](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#validation) 
 ###  [Error Resolution](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#error-resolution-1)
-###[Logging](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#logging)
-###[Containerization and Metrics](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#containerization-and-metrics)
-###[Extension 2](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#extension-2)
-###[Trade offs and Retrospection](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#trade-offs-and-retrospection)
-###[References](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#references)
+###  [Logging](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#logging)
+###  [Containerization and Metrics](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#containerization-and-metrics)
+###  [Extension 2](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#extension-2)
+###  [Trade offs and Retrospection](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#trade-offs-and-retrospection)
+###  [References](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#references)
 
 ## Goals
 
