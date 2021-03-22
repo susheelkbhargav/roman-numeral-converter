@@ -56,17 +56,18 @@ public class RomanNumeralConverterService {
 	}
 
 	/**
-	 * to compute roman numbers 
+	 * to compute roman numbers asynchronously
 	 * @param numberToConvert
-	 * @return
+	 * @return romanNumber object after its completed
 	 */
 	private Future<RomanNumber> aysncToRomanNumber(Integer numberToConvert) {
 		return calculatorExecutorService.submit(() -> toRomanNumber(numberToConvert));
 	}
 
 	/**
-	 * 
+	 * check if number is within min number to convert and max number to convert
 	 * @param numberToConvert
+	 * 
 	 */
 	private void checkSupportedRange(int numberToConvert) {
 		if (numberToConvert == 0) {
@@ -81,10 +82,10 @@ public class RomanNumeralConverterService {
 	}
 
 	/**
-	 * 
+	 * Uses the executor service to spin up a pool of threads to compute values and insert into the list.
 	 * @param minNumber
 	 * @param maxNumber
-	 * @return
+	 * @return List of RomanNumbers
 	 */
 	public List<RomanNumber> convertRangeToRoman(int minNumber, int maxNumber) {
 		Map<Integer, Future> numberToFutureMap = new HashMap<>();

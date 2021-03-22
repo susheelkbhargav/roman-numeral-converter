@@ -22,8 +22,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	/**
 	 * 
-	 * @param exception
-	 * @return
+	 * @param RangeViolationException
+	 * @return ResponseObject
 	 */
 	@ExceptionHandler(RangeViolationException.class)
 	public ResponseEntity<Object> numberNotInRangeHandling(RangeViolationException exception) {
@@ -35,8 +35,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	/**
 	 * 
-	 * @param exception
-	 * @return
+	 * @param RangeQueryException
+	 * @return ResponseObject
 	 */
 	@ExceptionHandler(RangeQueryException.class)
 	public ResponseEntity<Object> rangeIsNotCorrect(RangeQueryException exception) {
@@ -47,8 +47,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	/**
 	 * Returns an error response when input number is zero. called when exception is thrown
-	 * @param NumberIsZero
-	 * @return
+	 * @param NumberIsZeroException
+	 * @return  ResponseObject
 	 */
 	@ExceptionHandler(NumberIsZeroException.class)
 	public ResponseEntity<Object> numberIsZeroHandling(NumberIsZeroException exception) {

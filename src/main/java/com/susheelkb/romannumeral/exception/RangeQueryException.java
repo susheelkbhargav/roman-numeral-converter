@@ -9,7 +9,7 @@ public class RangeQueryException extends RuntimeException {
 	private static final long serialVersionUID = 2L;
 
 	/**
-	 * 
+	 * constructor
 	 * @param message
 	 */
 	public RangeQueryException(String message) {
