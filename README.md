@@ -62,7 +62,7 @@ Clone the project using git clone command
      
 Navigate to the project folder 
   
-    cd roman-numeral-converter-app
+    cd roman-numeral-converter
     
 To build the project, run the following command
     
