@@ -122,23 +122,52 @@ ALTERNATIVELY
 
 ### Test cases and development  
 
- All the edge cases like, input number 0, negative numbers and strings containing alphabets are tested using junit.
+ All the edge cases like, input number 0, negative numbers and strings containing alphabets are tested using junit Jupiter.
 
 Integration tests were done via PostMan to serve requests and via checking the log files. Logging is one of the important features to have in the system as it helps in finding the root cause to the issues in production.
 
 Coding styles, coding standards were followed throughout the project development. All the modules, classes and functions are inline documented.
  
 
-
-
-
 ## 5. Project layout
-pom.xml                  # Maven pom file for build and dependencies     
-README.md                # The current readme file
 
+
+			Root
+			pom.xml                 # Maven pom file for build and dependencies     
+			README.md               # The current readme file
+			src
+			    main
+			        java
+			            com.susheelkb.romannumeral
+			            						  .controller
+			            						  .domain
+			            						  .error
+			            						  .exception
+			            						  .service
+			            						  .util
+			            						  RomanNumsApplication.java
+			        resources
+			        		 application.properties
+			        		 Logback.xml    						  	
+			        
+			    test
+			        java
+			            com.susheelkb.romannumeral.service
+               
 ## 6. Data call flow 
 
 <img width="845" alt="sequenceDiagram" src="https://user-images.githubusercontent.com/24768156/111935170-4825d380-8a99-11eb-8842-86a4cb593192.png">
+
+1. Client request to convert `1234` into roman numerical 
+2. API responds with `MCCXXXIV`
+3. Client requests to convert `-1` into roman numerical
+4. API responds with
+ 
+		{
+		error: "UNPROCESSABLE_ENTITY",
+		timestamp: "22-03-2021 05:51:17",
+		message: "The number entered must be between 1and 3999"
+		 }
 
 
 ## 7. Testing
@@ -150,7 +179,7 @@ A set of requests are sent with all the cases including but not limited to :
 -Missing Required Parameters
 -String values that are not integers.
 
-jUnit framework was used for all the test cases including testing exceptions
+jUnit jupiter framework was used for all the test cases including testing exceptions
 
 
 

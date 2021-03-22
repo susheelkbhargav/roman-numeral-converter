@@ -77,7 +77,7 @@ public class RomanNumeralConverterService {
 		if (numberToConvert < AppConstants.MIN_NUMBER_TO_CONVERT
 				|| numberToConvert > AppConstants.MAX_NUMBER_TO_CONVERT) {
 			throw new RangeViolationException("The number entered must be between " + AppConstants.MIN_NUMBER_TO_CONVERT
-					+ "and " + AppConstants.MAX_NUMBER_TO_CONVERT);
+					+ " and " + AppConstants.MAX_NUMBER_TO_CONVERT);
 		}
 	}
 
