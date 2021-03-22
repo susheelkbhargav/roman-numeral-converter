@@ -145,6 +145,8 @@ README.md                # The current readme file
 
 ## 6. Data call flow 
 
+<img width="845" alt="sequenceDiagram" src="https://user-images.githubusercontent.com/24768156/111935170-4825d380-8a99-11eb-8842-86a4cb593192.png">
+
  
 
 ## 8. Error handling
