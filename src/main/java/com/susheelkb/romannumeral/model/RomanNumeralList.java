@@ -1,4 +1,4 @@
-package com.susheelkb.romannumeral.domain;
+package com.susheelkb.romannumeral.model;
 
 import java.util.List;
 

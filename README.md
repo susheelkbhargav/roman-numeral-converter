@@ -140,7 +140,7 @@ Coding styles, coding standards were followed throughout the project development
 ## Project layout
 
 
-			Root
+			Root Directory
 			pom.xml                 # Maven pom file for build and dependencies     
 			README.md               # The current readme file
 			src
@@ -154,6 +154,7 @@ Coding styles, coding standards were followed throughout the project development
 			            			  .service
 			            			  .util
 			            			  RomanNumsApplication.java
+
 			        resources
 			        		 application.properties
 			        		 Logback.xml    						  	
@@ -161,7 +162,24 @@ Coding styles, coding standards were followed throughout the project development
 			    test
 			        java
 			            com.susheelkb.romannumeral.service
-               
+
+
+The main java code of the project is segregated as follows:
+
+The controller package have classes that are responsible for processing REST API requests and delegating to services or just returning the view to be rendered as a Response
+
+The model package contains the data objects
+
+The error package contains the error object which will be rendered as a response upon an exception
+
+The exception package contains the exceptions defined
+
+Util package has helper classes which contain static methods, is usually stateless and cannot be instantiated, they could be reused across the whole application
+
+Service package contain Service classes, where the main logic is written.
+
+
+			                           
 ## Sequence Diagram
 
 

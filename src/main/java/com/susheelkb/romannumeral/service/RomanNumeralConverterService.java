@@ -14,10 +14,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
-import com.susheelkb.romannumeral.domain.RomanNumber;
+
 import com.susheelkb.romannumeral.exception.NumberIsZeroException;
 import com.susheelkb.romannumeral.exception.RangeQueryException;
 import com.susheelkb.romannumeral.exception.RangeViolationException;
+import com.susheelkb.romannumeral.model.RomanNumber;
 import com.susheelkb.romannumeral.util.AppConstants;
 
 /**

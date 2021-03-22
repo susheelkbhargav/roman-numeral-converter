@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
 
-import com.susheelkb.romannumeral.domain.RomanNumber;
 import com.susheelkb.romannumeral.exception.NumberIsZeroException;
 import com.susheelkb.romannumeral.exception.RangeViolationException;
+import com.susheelkb.romannumeral.model.RomanNumber;
 import com.susheelkb.romannumeral.service.RomanNumeralConverterService;
 import com.susheelkb.romannumeral.util.AppConstants;
 

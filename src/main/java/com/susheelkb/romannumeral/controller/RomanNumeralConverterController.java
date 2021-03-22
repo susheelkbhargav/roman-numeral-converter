@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.susheelkb.romannumeral.domain.RomanNumeralList;
-import com.susheelkb.romannumeral.domain.RomanNumber;
+import com.susheelkb.romannumeral.model.RomanNumber;
+import com.susheelkb.romannumeral.model.RomanNumeralList;
 import com.susheelkb.romannumeral.service.RomanNumeralConverterService;
 
 import java.util.List;

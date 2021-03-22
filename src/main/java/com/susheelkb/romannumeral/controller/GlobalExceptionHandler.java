@@ -29,7 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	public ResponseEntity<Object> numberNotInRangeHandling(RangeViolationException exception) {
 		ApiError errorDetails = new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, exception);
 		logger.error("Number out of Range", exception);
-		return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
+		return new ResponseEntity<Object>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
 
 	}
 
@@ -46,15 +46,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * 
-	 * @param exception
+	 * Returns an error response when input number is zero. called when exception is thrown
+	 * @param NumberIsZero
 	 * @return
 	 */
 	@ExceptionHandler(NumberIsZeroException.class)
 	public ResponseEntity<Object> numberIsZeroHandling(NumberIsZeroException exception) {
 		ApiError errorDetails = new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, exception);
 		logger.error("Number is Zero", exception);
-		return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
+		return new ResponseEntity<Object>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
 
 	}
 	

@@ -1,4 +1,4 @@
-package com.susheelkb.romannumeral.domain;
+package com.susheelkb.romannumeral.model;
 
 public class RomanNumber {
 	private int input;
