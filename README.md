@@ -199,7 +199,24 @@ A GlobalExceptionHandler is declared which handles custom as well as generic exc
 
 Custom exceptions are nested in a seperate folder.
 
-Each exception is logged.
+An ApiError Object is defined which will be used to send error responses as json. To get calls directly from controller, in case of a number format exception a constructor is overloaded to give custom message to the user instead of a message created by the exception itself.
+
+That would make this 
+	
+		{
+			error: "BAD_REQUEST",
+			timestamp: "22-03-2021 06:05:33",
+			message: "For input string: "min""
+    }
+  
+To this:
+         
+         {
+			error: "BAD_REQUEST",
+			timestamp: "22-03-2021 06:05:33",
+			message: "Given query parameter can't be converted into an integer"
+         } 
+            
 			
 
 ## 9. Logging
