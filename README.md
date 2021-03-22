@@ -4,8 +4,8 @@ Part of the take home assessment
 ##Index
 
 ### [Goals](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#1-goals) 
-### [2. Tools Required for the project](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#2-tools-required-for-the-project)
-### [3.Running the program](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#3-running-the-program)
+### [Tools Required for the project](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#2-tools-required-for-the-project)
+### [Running the program](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#3-running-the-program)
 ### [Development methodology](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#4-development-methodology) 
 ### [Package layout](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#5-project-layout) 
 ###  [Sequence Diagram](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#6-sequence-diagram)
@@ -40,7 +40,7 @@ To use multithreading in Java or async processing (JavaScript) to compute the va
   Maven 3.6
   * 
   
-  To install JDK 8+ version on your system, go to JAVA SE JDK 8 offical download page [here](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html). Download the executable (.exe) file according to your OS requirements and run the executable on the machine
+  To install JDK 8+ version on your system, go to JAVA SE JDK 8 offical download page [here](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).      Download the executable (.exe) file according to your OS requirements and run the executable on the machine
   
   To run the project on your machine, we need to install Maven, a dependency management system. 
   
@@ -69,7 +69,7 @@ This command reads the dependencies in the pom.xml, clears any compiled files th
 
      cd target/
 
-run the jar file using java -jar and the name of the snapshot.Here it is 
+Run the jar file using java -jar and the name of the snapshot.Here it is 
 "roman-numeral-converter-app-0.0.1-SNAPSHOT.jar"
 
      java -jar roman-numeral-converter-app-0.0.1-SNAPSHOT.jar
@@ -82,19 +82,19 @@ We can start hitting the endpoint once the console prints a message similar to t
 After sucessful start of the server, Use any browser or any tool to access the API. 
   
       http://localhost:8080/romannumeral?query={integer} , 
-replace '{integer}' with any integer number between 1 and 3999 (included)`
+Replace '{integer}' with any integer number between 1 and 3999 (included)`
 
 *Note : If there is any application already using port 8080 you may get error saying the port 8080 is already in use. To resolve this, you can either change the port (recommended) or stop the other process running on port 8080 if needed*
 
 ## Running the application through docker
 
-   you can use docker to run the project. To install docker and its dependencies,click [here](https://docs.docker.com/get-docker/)
+   You can use docker to run the project. To install docker and its dependencies,click [here](https://docs.docker.com/get-docker/)
    
-   pull the docker image from my docker hub using CLI using the uri
+   Pull the docker image from my docker hub using CLI using the uri
    
      docker pull susheelkbhargav/roman-numeral-converter-app
    
-   map ports 8080, and 9091 to their respective ports for the container and run
+   Map ports 8080, and 9091 to their respective ports for the container and run
    
      docker run -p 8080:8080 -p 9091:9091 susheelkbhargav/roman-numeral-converter-app
  
@@ -147,13 +147,13 @@ Coding styles, coding standards were followed throughout the project development
 			    main
 			        java
 			            com.susheelkb.romannumeral
-			            						  .controller
-			            						  .domain
-			            						  .error
-			            						  .exception
-			            						  .service
-			            						  .util
-			            						  RomanNumsApplication.java
+			            			  .controller
+			            			  .domain
+			            			  .error
+			            			  .exception
+			            			  .service
+			            			  .util
+			            			  RomanNumsApplication.java
 			        resources
 			        		 application.properties
 			        		 Logback.xml    						  	
@@ -164,7 +164,6 @@ Coding styles, coding standards were followed throughout the project development
                
 ## Sequence Diagram
 
-<img width="845" alt="sequenceDiagram" src="https://user-images.githubusercontent.com/24768156/111935170-4825d380-8a99-11eb-8842-86a4cb593192.png">
 
 1. Client request to convert `1234` into roman numerical 
 2. API responds with `MCCXXXIV`
