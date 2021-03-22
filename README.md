@@ -1,7 +1,7 @@
 # roman-numeral-converter
 Part of the take home assessment
 
-##Index
+## Index
 
 ### [Goals](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#1-goals) 
 ### [Tools Required for the project](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#2-tools-required-for-the-project)
