@@ -3,8 +3,16 @@ Part of the take home assessment
 
 ##Index
 
+### [Goals](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#1-goals) 
+### [2. Tools Required for the project](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#2-tools-required-for-the-project)
+### [3.Running the program](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#3-running-the-program)
+### [Development methodology](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#4-development-methodology) 
+### [Package layout](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#5-project-layout) 
+###  [Sequence Diagram](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#6-sequence-diagram)
+###  [Tests](https://github.com/narendrakatamaneni/NumberToRomanNumeral#7-tests-1) 
+###  [Error handling](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#8-error-handling) 
 
-## 1. Goals
+## Goals
 
 A HTTP Endpoint which must accept a URI in this format: http://localhost:8080/romannumeral?query={integer}
 {integer} must be any integer value in the range 1-3999 as mentioned in Extension 1 (insert link). Errors can be returned in plain text format, but successful response must be a JSON document
@@ -25,7 +33,7 @@ supported range 1-3999.
 To use multithreading in Java or async processing (JavaScript) to compute the values in the range in parallel, assemble the results and return them in ascending order from the minimum to the maximum value. Successful responses to these queries must include a JSON payload with an array named conversions, where each element of the array is an input/output pair of strings, in ascending order.
 
 
-## 2. Tools Required for the project.
+## Tools Required for the project.
   
   *Prerequisites in order of installation: 
   JDK 8+
@@ -42,7 +50,7 @@ To use multithreading in Java or async processing (JavaScript) to compute the va
   
   
 
-### 3. Running the program
+### Running the Application installing the dependencies
   
 
 Clone the project using git clone command
@@ -78,7 +86,7 @@ replace '{integer}' with any integer number between 1 and 3999 (included)`
 
 *Note : If there is any application already using port 8080 you may get error saying the port 8080 is already in use. To resolve this, you can either change the port (recommended) or stop the other process running on port 8080 if needed*
 
-ALTERNATIVELY
+## Running the application through docker
 
    you can use docker to run the project. To install docker and its dependencies,click [here](https://docs.docker.com/get-docker/)
    
@@ -88,7 +96,7 @@ ALTERNATIVELY
    
    map ports 8080, and 9091 to their respective ports for the container and run
    
-     docker run -p 8080:8080 9091:9091 susheelkbhargav/roman-numeral-converter-app
+     docker run -p 8080:8080 -p 9091:9091 susheelkbhargav/roman-numeral-converter-app
  
  This will start the container and expose the api on the above ports
  
@@ -98,15 +106,15 @@ ALTERNATIVELY
     
      http://localhost/8080/api-docs
 
-## 4. Development methodology
+## Development methodology
 
-### Step 1: Requirement gathering 
+### Requirement gathering 
 
  The first step was reading the assignment document in detail, I took considerable time to read the document. The required extensions was to expand the range of numbers to convert from 1-3999, and to make the project production ready i.e, it should give out the required output, give out the specified errors, throw exceptions, log correctly and expose endpoints for a production tool monitor or gather metrics, preferably in a containerized way
 
-### Step 2: Design considerations  
+### Design considerations  
 
-#### Language and Tools Considerations
+####Language and Tools Considerations
    
     
   I chose Java (version 8) and Spring Boot to develop this application as Spring Boot has features like actuator which expose metrics as a HTTP endpoint which could be scraped or polled by a monitoring tool in a production environment (e.g, Prometheus). Spring Boot also has an embedded server which would help me in rapid deployment and debugging during the course of the development. And I can simply add the frameworks needed using maven.
@@ -129,7 +137,7 @@ Integration tests were done via PostMan to serve requests and via checking the l
 Coding styles, coding standards were followed throughout the project development. All the modules, classes and functions are inline documented.
  
 
-## 5. Project layout
+## Project layout
 
 
 			Root
@@ -154,7 +162,7 @@ Coding styles, coding standards were followed throughout the project development
 			        java
 			            com.susheelkb.romannumeral.service
                
-## 6. Data call flow 
+## Sequence Diagram
 
 <img width="845" alt="sequenceDiagram" src="https://user-images.githubusercontent.com/24768156/111935170-4825d380-8a99-11eb-8842-86a4cb593192.png">
 
@@ -170,20 +178,22 @@ Coding styles, coding standards were followed throughout the project development
 		 }
 
 
-## 7. Testing
+## Validation
 
 A set of requests are sent with all the cases including but not limited to :
--Numbers within min and max values
--Numbers outside of min and max values
--Query Range within min and max values
--Missing Required Parameters
--String values that are not integers.
+-Numbers within min and max values - This should return a valid Roman Numeral
+-Numbers outside of min and max values- This should return an unprocessable entity status
+-Query Range within min and max values - This should return an array list of conversions
+-Missing Required Parameters - should send a 400 BAD_REQUEST error
+-String values that are not integer - should send a 400 BAD_REQUEST error.
 
 jUnit jupiter framework was used for all the test cases including testing exceptions
 
+Validations are done using hibernate.validator in spring boot.
 
 
-## 8. Error handling
+
+## Error Resolution
 
 ### Query value is 0
   
@@ -216,13 +226,22 @@ The server will return a **400 Bad Request status code because of MismatchedArgu
 			timestamp: "22-03-2021 06:05:33",
 			message: "For input string: "min""
     }
+
+### Query Value is empty or one value is missing  
+
+The server will return a **400 Bad Request status code because of ConstraintViolationException** :
+
+      {
+		error: "BAD_REQUEST",
+		timestamp: "22-03-2021 08:57:54",
+		message: "Invalid input parameters: convertRangeToRomanNumeral.maxParam: must not be empty "
+		}  
     
 ### Design Considerations
 
-Eventhough we are converting numbers, to make spring not default to a Whitelabel error page or a traditional "Page isn't Working" screen, the input params were taken as a string and then converted into an integer. Doing this would allow the ExceptionHandler to catch a NumberFormatException
-which would be significant to throw a custom response as JSON.
+Eventhough we are converting numbers, to make spring not default to a Whitelabel error page or a traditional "Page isn't Working" screen, the input params were taken as a string and then converted into an integer. Doing this would allow the ExceptionHandler to catch a NumberFormatException which would be significant to throw a custom response as JSON.
 
-Exception Handling is as follows.
+Exception Handling is as follows:
 
 A GlobalExceptionHandler is declared which handles custom as well as generic exceptions.
 
@@ -251,6 +270,12 @@ To this:
 ## 9. Logging
 
 Default Logback logger is used with SLF4J facade implementation. A rolling file appender is used so that the log files are contained in a folder and state is saved even though the server is restarted or stopped for some reason. This could be easily translated into a production level logging where an external drive is mounted to a docker container to save the logs even if the container is removed
+
+### Logging Practices
+    
+Logging when an exception is caught and/or when the response is built in exception handler; not when it is thrown.
+
+Overloading toString() method for RomanNumeral object to have some context instead of just logging the object ID.
 
 ### Design Considerations
 
@@ -336,7 +361,15 @@ Applied Multithreading to list conversions between a range. Used Executor Servic
 
 Have implemented Custom RangeQuery Exception to handle min and max out of order queries.
 
-## 11. References
+## Trade offs and Retrospection
+
+I took some conscious decisions like not putting @max @min in the REST controller becuase I changed the input param type to String instead of int. This was done to deliver a custom response instead of WhiteLabel error for 400 bad request.
+
+Had multiple instances of logger instead of a single instance. This is to have granular control over logging levels in different classes. This was also a reason behind not using Aspects even though it would reduce cross cutting concerns if the project was big.
+
+The main focus was to handle exceptions and to containerize the application to deploy into a production environment easily.
+
+## References
 Below mentioned two web resources were used in understanding various rules and notations used in roman number system as well as Spring Boot.
 
 - For roman numerals: [Roman Numerals on mathisfun](https://www.mathsisfun.com/roman-numerals.html)

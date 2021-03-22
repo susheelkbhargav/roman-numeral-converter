@@ -1,4 +1,6 @@
-package com.susheelkb.romannumeral.exception;
+package com.susheelkb.romannumeral.controller;
+
+import javax.validation.ConstraintViolationException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import com.susheelkb.romannumeral.error.ApiError;
+import com.susheelkb.romannumeral.exception.NumberIsZeroException;
+import com.susheelkb.romannumeral.exception.RangeQueryException;
+import com.susheelkb.romannumeral.exception.RangeViolationException;
+
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
@@ -37,7 +43,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		ApiError errorDetails = new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, exception);
 		logger.error("Min and Max values of the given range do not follow order", exception);
 		return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
-
 	}
 
 	/**
@@ -60,5 +65,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<Object>(errorDetails, HttpStatus.BAD_REQUEST);
 
 	}
+	
+	@ExceptionHandler(ConstraintViolationException.class)
+	  public final ResponseEntity<Object> handleConstraintViolationExceptions(ConstraintViolationException exception) {
+	    String exceptionResponse = String.format("Invalid input parameters: %s\n", exception.getMessage());
+	    ApiError errorDetails = new ApiError(HttpStatus.BAD_REQUEST, exceptionResponse);
+		logger.error(exceptionResponse, exception);
+	    return new ResponseEntity<Object>(errorDetails, HttpStatus.BAD_REQUEST);
+	  }
     
 }

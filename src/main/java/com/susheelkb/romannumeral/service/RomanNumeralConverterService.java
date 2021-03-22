@@ -12,8 +12,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 import com.susheelkb.romannumeral.domain.RomanNumber;
@@ -23,7 +21,6 @@ import com.susheelkb.romannumeral.exception.RangeViolationException;
 import com.susheelkb.romannumeral.util.AppConstants;
 
 /**
- *
  * 
  * @author : Susheel Kaparaboyna
  *
@@ -35,10 +32,11 @@ public class RomanNumeralConverterService {
 
 
 	/**
-	 * Returns the Roman numeral equivalent of the given number.
+	 * returns a RomanNumber of a given integer provided its within the range
 	 * 
-	 * @param numberToConvert
-	 * @return Roman Numeral Object
+	 *
+	 * @param numberToConvert - an integer value
+	 * @return romanNumber - a RomanNumber Object
 	 */
 	public RomanNumber toRomanNumber(Integer numberToConvert) {
 		checkSupportedRange(numberToConvert);
@@ -57,7 +55,7 @@ public class RomanNumeralConverterService {
 	}
 
 	/**
-	 * 
+	 * to compute roman numbers 
 	 * @param numberToConvert
 	 * @return
 	 */
@@ -103,8 +101,12 @@ public class RomanNumeralConverterService {
 			try {
 				multiResultList.add((RomanNumber) val.get());
 			} catch (InterruptedException e) {
+				logger.error("Exception occured while adding to ResultList for key,value: +"
+			+key +" "+ val,e);
 				e.printStackTrace();
 			} catch (ExecutionException e) {
+				logger.error("Exception occured while adding to ResultList for key,value: +"
+						+key +" "+ val,e);
 				e.printStackTrace();
 			}
 		});
