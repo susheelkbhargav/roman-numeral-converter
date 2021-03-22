@@ -12,12 +12,12 @@ Part of the take home assessment
 ###  [Sequence Diagram](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#sequence-diagram-1)
 ### [Validation](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#validation)
 ###  [Error Resolution](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#error-resolution) 
-###  [Error handling](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#8-error-handling)
-###[Logging]()
-###[Containerization and Metrics]()
-###[Extension 2]()
-###[Trade offs and Retrospection]()
-###[References]()
+###  [Error Resolution](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#error-resolution-1)
+###[Logging](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#logging)
+###[Containerization and Metrics](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#containerization-and-metrics)
+###[Extension 2](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#extension-2)
+###[Trade offs and Retrospection](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#trade-offs-and-retrospection)
+###[References](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#references)
 
 ## Goals
 
