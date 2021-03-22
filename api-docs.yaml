@@ -1,0 +1,53 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /romannumeral:
+    get:
+      tags:
+      - roman-numeral-converter-controller
+      operationId: toRomanNum_1
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: min
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: max
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/RomanNumber'
+                - $ref: '#/components/schemas/RomanNumber'
+components:
+  schemas:
+    RomanNumber:
+      type: object
+      properties:
+        input:
+          type: integer
+          format: int32
+        output:
+          type: string
