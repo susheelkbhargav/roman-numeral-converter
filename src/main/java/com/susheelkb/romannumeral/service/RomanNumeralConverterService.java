@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.hibernate.validator.internal.util.logging.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 import com.susheelkb.romannumeral.domain.RomanNumber;
 import com.susheelkb.romannumeral.exception.NumberIsZeroException;
@@ -28,6 +30,7 @@ import com.susheelkb.romannumeral.util.AppConstants;
  */
 @Service
 public class RomanNumeralConverterService {
+	Logger logger = org.slf4j.LoggerFactory.getLogger(RomanNumeralConverterService.class);
 	private ExecutorService calculatorExecutorService = Executors.newCachedThreadPool();
 
 
@@ -49,6 +52,7 @@ public class RomanNumeralConverterService {
 			}
 		}
 		romanNumber.setOutput(result.toString());
+		logger.info("{} created ",romanNumber);
 		return romanNumber;
 	}
 
@@ -90,6 +94,7 @@ public class RomanNumeralConverterService {
 		if (maxNumber < minNumber) {
 			throw new RangeQueryException("Min should always be less than or equal to Max");
 		}
+		
 		List<RomanNumber> multiResultList = new ArrayList<RomanNumber>();
 		for (int number = minNumber; number <= maxNumber; number++) {
 			numberToFutureMap.put(number, aysncToRomanNumber(number));

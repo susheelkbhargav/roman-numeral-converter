@@ -10,9 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class RomanNumsApplication {
-
 	/**
-	 * 
+	 * Launches the application
 	 * @param args
 	 */
 	public static void main(String[] args) {

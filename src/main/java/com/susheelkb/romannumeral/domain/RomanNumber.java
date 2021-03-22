@@ -65,5 +65,10 @@ public class RomanNumber {
 		RomanNumber that = (RomanNumber) obj;
 		return (input == that.input) && output.equals(that.output);
 	}
+	
+	@Override
+    public String toString() {
+   	 return "Roman number object [input= " + input + ", output =" + output + "]";
+    }
 
 }

@@ -1,18 +1,24 @@
 package com.susheelkb.romannumeral.error;
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpStatus;
 
-public class RomanNumeralError {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class ApiError {
 	private HttpStatus status;
-	private String message;
-	
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    private LocalDateTime timestamp;
+    private String message;	
 	/**
 	 * 
 	 * @param status
 	 * @param message
 	 */
-	public RomanNumeralError(HttpStatus status, String message){
+	public ApiError(HttpStatus status,Throwable ex){
+        this.timestamp = LocalDateTime.now();
 		this.status = status;
-		this.message = message;
+		this.message = ex.getMessage();
 	}
 	
 	/**
