@@ -16,30 +16,25 @@ paths:
         in: query
         required: true
         schema:
-          type: integer
-          format: int32
+          type: string
       - name: min
         in: query
         required: true
         schema:
-          type: integer
-          format: int32
+          type: string
       - name: max
         in: query
         required: true
         schema:
-          type: integer
-          format: int32
+          type: string
       responses:
-        200:
+        "200":
           description: OK
           content:
             '*/*':
               schema:
                 oneOf:
-                - type: array
-                  items:
-                    $ref: '#/components/schemas/RomanNumber'
+                - $ref: '#/components/schemas/RomanNumeralList'
                 - $ref: '#/components/schemas/RomanNumber'
 components:
   schemas:
@@ -51,3 +46,10 @@ components:
           format: int32
         output:
           type: string
+    RomanNumeralList:
+      type: object
+      properties:
+        conversions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RomanNumber'
