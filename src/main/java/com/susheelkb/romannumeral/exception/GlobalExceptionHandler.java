@@ -33,9 +33,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 * @return
 	 */
 	@ExceptionHandler(RangeQueryException.class)
-	public ResponseEntity<Object> numberNotAnIntegerHandling(RangeQueryException exception) {
+	public ResponseEntity<Object> rangeIsNotCorrect(RangeQueryException exception) {
 		ApiError errorDetails = new ApiError(HttpStatus.UNPROCESSABLE_ENTITY, exception);
-		logger.error("Doesn't Come under range", exception);
+		logger.error("Min and Max values of the given range do not follow order", exception);
 		return new ResponseEntity<>(errorDetails, HttpStatus.UNPROCESSABLE_ENTITY);
 
 	}
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(NumberFormatException.class)
 	public ResponseEntity<Object> notANumberHandling(NumberFormatException exception) {
-		ApiError errorDetails = new ApiError(HttpStatus.BAD_REQUEST, exception);
+		ApiError errorDetails = new ApiError(HttpStatus.BAD_REQUEST, "Given parameter cannot be converted into an integer");
 		logger.error("Number is Not an Integer", exception);
 		return new ResponseEntity<Object>(errorDetails, HttpStatus.BAD_REQUEST);
 

@@ -1,8 +1,7 @@
 # roman-numeral-converter
 Part of the take home assessment
 
-
-## Index 
+##Index
 
 
 ## 1. Goals
@@ -23,20 +22,10 @@ Extension 2(Optional): To Add support for range queries. of this format:
 http://localhost:8080/romannumeral?min={integer}&max={integer}. 
 {integer} must be an integer value for both the min and max parameters. Both min and max must be provided. Min must be less than max. Both must be in the
 supported range 1-3999. 
-To use multithreading in Java or async processing (JavaScript) to compute the values in the range in parallel, assemble the results and return them in ascending order from the minimum to the maximum value. Successful responses to these queries must include a JSON payload with an array named conversions, where each element of the array is an input/output pair of strings, in ascending order. e.g:
-
-{
-“conversions”: [
-{ “input” : “1”, “output” : “I” },
-{ “input” : “2”, “output” : “II” },
-{ “input” : “3”, “output” : “III” }
-]
-}
+To use multithreading in Java or async processing (JavaScript) to compute the values in the range in parallel, assemble the results and return them in ascending order from the minimum to the maximum value. Successful responses to these queries must include a JSON payload with an array named conversions, where each element of the array is an input/output pair of strings, in ascending order.
 
 
 ## 2. Tools Required for the project.
-
- 
   
   *Prerequisites in order of installation: 
   JDK 8+
@@ -58,7 +47,7 @@ To use multithreading in Java or async processing (JavaScript) to compute the va
 
 Clone the project using git clone command
   
-     git clone https://github.com/susheelkbhargav/roman-numeral-converter.git
+    git clone https://github.com/susheelkbhargav/roman-numeral-converter.git
      
 Navigate to the project folder 
   
@@ -113,28 +102,32 @@ ALTERNATIVELY
 
 ### Step 1: Requirement gathering 
 
-     The first step was reading the assignment document in detail, I took considerable time to read the document. The required extensions was to expand the range of numbers to convert from 1-3999, and to make the project production ready i.e, it should give out the required output, give out the specified errors, throw exceptions, log correctly and expose endpoints for a production tool monitor or gather metrics, preferably in a containerized way
+ The first step was reading the assignment document in detail, I took considerable time to read the document. The required extensions was to expand the range of numbers to convert from 1-3999, and to make the project production ready i.e, it should give out the required output, give out the specified errors, throw exceptions, log correctly and expose endpoints for a production tool monitor or gather metrics, preferably in a containerized way
 
 ### Step 2: Design considerations  
 
-   #### Language and Tools Considerations
+#### Language and Tools Considerations
    
     
   I chose Java (version 8) and Spring Boot to develop this application as Spring Boot has features like actuator which expose metrics as a HTTP endpoint which could be scraped or polled by a monitoring tool in a production environment (e.g, Prometheus). Spring Boot also has an embedded server which would help me in rapid deployment and debugging during the course of the development. And I can simply add the frameworks needed using maven.
     
   I am familiar with Docker so I could use a docker file to build a container with all the required dependencies and push it to a docker hub. The user could use the public URL to download the image and run the docker container without needing to install any tools or dependencies in the user's system.
     
-  #### Application Design Considerations
+#### Application Design Considerations
   
   Considerable time is spent to make sure the application is designed using best practices. Some of them are:
-      The romannumeral api will accept a GET request in JSON and will only respond in JSON
-      The application is developed using seperation of concerns design pattern. The code for accepting Requests is put in the controller layer, the code to convert from Integer to Roman Numeral is put in the service layer, Exceptions are handled in exception layer ..etc
-      
-   
+  API- Design :The romannumeral api will accept a GET request in JSON and will only respond in JSON
+  Seperation of Concerns: The application is developed using seperation of concerns design pattern. The code for accepting Requests is put in the controller layer, the code to convert from Integer to Roman Numeral is put in the service layer, Exceptions are handled in exception layer and so forth.
+    
 
-### Step 3: Test cases and development  
+### Test cases and development  
 
- All the edge cases like, input number 0, negative numbers and strings containing alphabets are tested using junit
+ All the edge cases like, input number 0, negative numbers and strings containing alphabets are tested using junit.
+
+Integration tests were done via PostMan to serve requests and via checking the log files. Logging is one of the important features to have in the system as it helps in finding the root cause to the issues in production.
+
+Coding styles, coding standards were followed throughout the project development. All the modules, classes and functions are inline documented.
+ 
 
 
 
@@ -147,7 +140,19 @@ README.md                # The current readme file
 
 <img width="845" alt="sequenceDiagram" src="https://user-images.githubusercontent.com/24768156/111935170-4825d380-8a99-11eb-8842-86a4cb593192.png">
 
- 
+
+## 7. Testing
+
+A set of requests are sent with all the cases including but not limited to :
+-Numbers within min and max values
+-Numbers outside of min and max values
+-Query Range within min and max values
+-Missing Required Parameters
+-String values that are not integers.
+
+jUnit framework was used for all the test cases including testing exceptions
+
+
 
 ## 8. Error handling
 
@@ -155,9 +160,10 @@ README.md                # The current readme file
   
 The server will return a **422 ( UNPROCESSABLE ENTITY ) status code along with a json object**:
 
-    {
-      status: "UNPROCESSABLE_ENTITY",
-      message: "Query parameter value is 0, Roman numbers do not have a 0. Smallest supported value is 1."
+    { 
+		error: "UNPROCESSABLE_ENTITY",
+		timestamp: "22-03-2021 05:50:21",
+		message: "Query parameter value is 0, roman numbers do not have 		a 0. Smallest supported value is 1."
     }
 
 
@@ -166,8 +172,9 @@ The server will return a **422 ( UNPROCESSABLE ENTITY ) status code along with a
 The server will return a **422 ( UNPROCESSABLE ENTITY ) status code along with a json object**:
 
     {
-	    status: "UNPROCESSABLE_ENTITY",
-        message: "The number entered must be between 1and 3999"
+	    error: "UNPROCESSABLE_ENTITY",
+		timestamp: "22-03-2021 05:51:17",
+		message: "The number entered must be between 1and 3999"
     }
  
  
@@ -176,14 +183,119 @@ The server will return a **422 ( UNPROCESSABLE ENTITY ) status code along with a
 The server will return a **400 Bad Request status code because of MismatchedArgumentException** :
 
     {
-	   
+			error: "BAD_REQUEST",
+			timestamp: "22-03-2021 06:05:33",
+			message: "For input string: "min""
     }
+    
+### Design Considerations
 
-## 10. Containerization and Metrics
+Eventhough we are converting numbers, to make spring not default to a Whitelabel error page or a traditional "Page isn't Working" screen, the input params were taken as a string and then converted into an integer. Doing this would allow the ExceptionHandler to catch a NumberFormatException
+which would be significant to throw a custom response as JSON.
+
+Exception Handling is as follows.
+
+A GlobalExceptionHandler is declared which handles custom as well as generic exceptions.
+
+Custom exceptions are nested in a seperate folder.
+
+Each exception is logged.
+			
+
+## 9. Logging
+
+Default Logback logger is used with SLF4J facade implementation. A rolling file appender is used so that the log files are contained in a folder and state is saved even though the server is restarted or stopped for some reason. This could be easily translated into a production level logging where an external drive is mounted to a docker container to save the logs even if the container is removed
+
+### Design Considerations
+
+Project is structured following the Seperation of Concerns Principle. So the controller, the Service as well as the global exception handler will each have their own logger
+
+    Logger logger = LoggerFactory.getLogger(this.class)
+
+ which appends logs via Rolling File Appender configured in LogBack.xml
+
 
   
+## 10. Containerization and Metrics
+
+  I used docker to build a container out of the application with all the dependencies. This would be greatly beneficial for a production environment where I could easily push the docker image to an artifactory after generating from a CI pipeline. To Simulate that I am pushing the docker image to my personal docker hub.
+   
+   Commands to create a docker image inside the project folder :
+   
+      mvn clean package && docker image build -t susheelkbhargav/roman-numeral-converter-app .
+      
+      docker push susheelkbhargav/roman-numeral-converter-app
+    
+### Metrics
+  
+  I added Spring Boot Actuator as a dependency to my project which enabled me to expose metrics and monitoring as a HTTP endpoints.
+  
+  All links can be accessed from localhost:9091/actuator
+  
+		{{
+			_links: {
+			self: {
+			href: "http://localhost:9091/actuator",
+			templated: false
+			},
+			health: {
+			href: "http://localhost:9091/actuator/health",
+			templated: false
+			},
+			info: {
+			href: "http://localhost:9091/actuator/info",
+			templated: false
+			},
+			metrics: {
+			href: "http://localhost:9091/actuator/metrics",
+			templated: false
+			},
+			metrics-requiredMetricName: {
+			href: "http://localhost:9091/actuator/metrics/{requiredMetricName}",
+			templated: true
+			}
+		}
+	}}
+
+A sample metric like health data can be accessed via 
+        		
+			http://localhost:9091/actuator/health
+
+A sample data would be something like the following JSON
+
+        	 {
+				status: "UP",
+				details: {
+					diskSpace: {
+						status: "UP",
+					details: {
+						total: 495171137536,
+						free: 20352638976,
+						threshold: 10485760
+					}
+            	}
+			}
+		}			
+			
+  
+#### Design Considerations for Metrics and Monitoring
+
+The actuator links are exposed to a non standard port for added security in a production environment. 
+
+The metrics are exposed as HTTP endpoints as monitoring tools like prometheus, cloudwatch can easily scrape or poll these endpoints to gather metrics. Moreover, multimeter feature by Spring Boot have added support to these tools.
+   
+## Extension 2
+
+Applied Multithreading to list conversions between a range. Used Executor Service and Future from Java. Used the CachedThreadPool since it Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available. 
+
+Have implemented Custom RangeQuery Exception to handle min and max out of order queries.
 
 ## 11. References
+Below mentioned two web resources were used in understanding various rules and notations used in roman number system as well as Spring Boot.
+
+- For roman numerals: [Roman Numerals on mathisfun](https://www.mathsisfun.com/roman-numerals.html)
+
+- To utilise Spring Boot features: [Spring IO](https://docs.spring.io/spring-boot/docs/2.1.18.RELEASE/reference/html/)
 
 
 

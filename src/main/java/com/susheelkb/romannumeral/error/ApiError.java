@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ApiError {
-	private HttpStatus status;
+	private HttpStatus error;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
     private String message;	
@@ -17,8 +17,15 @@ public class ApiError {
 	 */
 	public ApiError(HttpStatus status,Throwable ex){
         this.timestamp = LocalDateTime.now();
-		this.status = status;
+		this.error = status;
 		this.message = ex.getMessage();
+	}
+	
+	
+	public ApiError(HttpStatus status, String message){
+        this.timestamp = LocalDateTime.now();
+		this.error = status;
+		this.message = message;
 	}
 	
 	/**
@@ -26,16 +33,16 @@ public class ApiError {
 	 * @return
 	 */
 	
-	public HttpStatus getStatus() {
-		return status;
+	public HttpStatus getError() {
+		return error;
 	}
 
 	/**
 	 * 
 	 * @param status
 	 */
-	public void setStatus(HttpStatus status) {
-		this.status = status;
+	public void setError(HttpStatus status) {
+		this.error = status;
 	}
 
 	/**
