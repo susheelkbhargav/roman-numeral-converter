@@ -132,10 +132,14 @@ Replace '{integer}' with any integer number between 1 and 3999 (included)`
 
  All the edge cases like, input number 0, negative numbers and strings containing alphabets are tested using junit Jupiter.
 
-Integration tests were done via PostMan to serve requests and via checking the log files. Logging is one of the important features to have in the system as it helps in finding the root cause to the issues in production.
+Integration tests were done via PostMan to serve requests and via checking the log files. 
 
-Coding styles, coding standards were followed throughout the project development. All the modules, classes and functions are inline documented.
- 
+
+Each test should only focus on a single responsibility and include a single assertion. 
+
+Written following Single Level of Abstraction Principle – the logic within a test should be written at a high level. 
+Details such as creating the request, sending the HTTP request to the server, dealing with IO, etc should not be done inline but via utility methods
+
 
 ## Project layout
 
@@ -384,7 +388,7 @@ I took some conscious decisions like not putting @max @min in the REST controlle
 
 Had multiple instances of logger instead of a single instance. This is to have granular control over logging levels in different classes. This was also a reason behind not using Aspects even though it would reduce cross cutting concerns if the project was big.
 
-The main focus was to handle exceptions and to containerize the application to deploy into a production environment easily.
+The main focus was to handle exceptions and to containerize the application to deploy into a production environment easily. The improvement would be to do a breadth first analysis over various multi threading methods to gauge which works the best if we want to scale.
 
 ## References
 Below mentioned two web resources were used in understanding various rules and notations used in roman number system as well as Spring Boot.

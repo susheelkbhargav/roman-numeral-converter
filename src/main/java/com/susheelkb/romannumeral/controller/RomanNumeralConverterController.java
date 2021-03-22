@@ -23,7 +23,7 @@ import javax.validation.constraints.NotEmpty;
 import org.slf4j.Logger;
 
 /**
- * 
+ * REST controller to get roman numerals for given parameters
  * @author susheel.kaparaboyna
  *
  */
@@ -39,7 +39,7 @@ public class RomanNumeralConverterController {
 	/**
 	 * 
 	 * @param number
-	 * @return
+	 * @return ResponseObject
 	 */
 
 	@GetMapping(value = "/romannumeral", params = { "query" })
@@ -54,7 +54,7 @@ public class RomanNumeralConverterController {
 	 * 
 	 * @param minNumber
 	 * @param maxNumber
-	 * @return
+	 * @return ResponseObject
 	 */
 	@GetMapping(value = "/romannumeral", params = { "min", "max" })
 	public ResponseEntity<RomanNumeralList> convertRangeToRomanNumeral(@RequestParam("min")@Valid @NotEmpty String minParam,
