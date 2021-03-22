@@ -3,14 +3,21 @@ Part of the take home assessment
 
 ## Index
 
-### [Goals](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#1-goals) 
-### [Tools Required for the project](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#2-tools-required-for-the-project)
-### [Running the program](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#3-running-the-program)
-### [Development methodology](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#4-development-methodology) 
-### [Package layout](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#5-project-layout) 
-###  [Sequence Diagram](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#6-sequence-diagram)
-###  [Tests](https://github.com/narendrakatamaneni/NumberToRomanNumeral#7-tests-1) 
-###  [Error handling](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#8-error-handling) 
+### [Goals](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#goals-1) 
+### [Tools Required for the project](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#tools-required-for-the-project-1)
+### [Running the App by Installing Dependencies](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#running-the-application-by-installing-the-dependencies)
+###[Running the application through Docker](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#running-the-application-through-docker)
+### [Development methodology](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#development-methodology-1) 
+### [Package layout](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#project-layout) 
+###  [Sequence Diagram](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#sequence-diagram-1)
+### [Validation](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#validation)
+###  [Error Resolution](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#error-resolution) 
+###  [Error handling](https://github.com/susheelkbhargav/roman-numeral-converter/blob/main/README.md#8-error-handling)
+###[Logging]()
+###[Containerization and Metrics]()
+###[Extension 2]()
+###[Trade offs and Retrospection]()
+###[References]()
 
 ## Goals
 
@@ -288,7 +295,7 @@ To this:
             
 			
 
-## 9. Logging
+## Logging
 
 Default Logback logger is used with SLF4J facade implementation. A rolling file appender is used so that the log files are contained in a folder and state is saved even though the server is restarted or stopped for some reason. This could be easily translated into a production level logging where an external drive is mounted to a docker container to save the logs even if the container is removed
 
@@ -308,7 +315,7 @@ Project is structured following the Seperation of Concerns Principle. So the con
 
 
   
-## 10. Containerization and Metrics
+## Containerization and Metrics
 
   I used docker to build a container out of the application with all the dependencies. This would be greatly beneficial for a production environment where I could easily push the docker image to an artifactory after generating from a CI pipeline. To Simulate that I am pushing the docker image to my personal docker hub.
    
