@@ -302,6 +302,8 @@ Default Logback logger is used with SLF4J facade implementation. A rolling file 
     
 Logging when an exception is caught and/or when the response is built in exception handler; not when it is thrown.
 
+Exceptions are logged as Error.
+
 Overloading toString() method for RomanNumeral object to have some context instead of just logging the object ID.
 
 ### Design Considerations

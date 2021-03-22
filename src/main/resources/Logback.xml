@@ -28,7 +28,7 @@
 
 
 
-	<root level="ERROR">
+	<root level="DEBUG">
 		<appender-ref ref="RollingFile" />
 		<appender-ref ref="STDOUT" />
 	</root>
